@@ -1,1 +1,240 @@
+/* =========================================================
+   Save Our Wildlife — stylesheet
+   Palette: deep forest bg, moss accent, warm paper text, amber CTA
+   ========================================================= */
 
+:root {
+  --bg: #0F1B12;
+  --panel: #16241A;
+  --paper: #E8E4D8;
+  --paper-dim: #B9C2B2;
+  --moss: #7BA05B;
+  --amber: #D4A24C;
+  --amber-dark: #B8842F;
+  --focus-ring: #F2D08A;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --radius: 14px;
+  --max-width: 760px;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(123,160,91,0.10), transparent 45%),
+    radial-gradient(circle at 85% 100%, rgba(212,162,76,0.06), transparent 50%);
+  color: var(--paper);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Skip link for keyboard / screen reader users */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--amber);
+  color: #1A1305;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 8px 0;
+  font-weight: 600;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Visible focus state everywhere — accessibility requirement */
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid rgba(232,228,216,0.08);
+}
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+}
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  fill: rgba(123,160,91,0.25);
+  stroke: var(--moss);
+  stroke-width: 1.4;
+  flex-shrink: 0;
+}
+.brand-vein {
+  fill: none;
+  stroke: var(--moss);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+/* ---------- Hero / main content ---------- */
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.page-heading {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  line-height: 1.05;
+  margin: 0 0 0.5rem;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+
+.hero-kicker {
+  margin: 0 0 2rem;
+  color: var(--moss);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* ---------- Video frame ---------- */
+.video-frame {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--panel);
+  box-shadow:
+    0 0 0 1px rgba(123,160,91,0.18),
+    0 20px 60px -20px rgba(0,0,0,0.6);
+}
+
+video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+/* Keep native controls usable/visible with decent contrast */
+video::-webkit-media-controls-panel {
+  background-color: rgba(15,27,18,0.85);
+}
+
+.video-description {
+  margin: 1.75rem 0 2rem;
+  max-width: 58ch;
+  color: var(--paper-dim);
+  font-size: 1.02rem;
+}
+
+/* ---------- Toggle button ---------- */
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--amber);
+  color: #1A1305;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.toggle-btn:hover {
+  background: var(--amber-dark);
+  transform: translateY(-1px);
+}
+.toggle-btn:active {
+  transform: translateY(0);
+}
+.toggle-btn .icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #1A1305;
+  stroke-width: 1.8;
+}
+.toggle-btn .icon-play {
+  fill: #1A1305;
+  stroke: none;
+}
+
+/* When video is hidden, button shows an amber "reveal" tone shift */
+.toggle-btn[aria-pressed="true"] {
+  background: var(--panel);
+  color: var(--paper);
+}
+.toggle-btn[aria-pressed="true"]:hover {
+  background: #1E3024;
+}
+.toggle-btn[aria-pressed="true"] .icon-hide {
+  stroke: var(--paper);
+}
+
+.video-frame.is-hidden {
+  display: none;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1.25rem 3rem;
+  color: var(--paper-dim);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(232,228,216,0.08);
+}
+
+/* ---------- Responsive breakpoints ---------- */
+@media (max-width: 600px) {
+  .hero { padding: 2rem 1rem 3rem; }
+  .page-heading { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .toggle-btn { width: 100%; justify-content: center; }
+}
+
+@media (min-width: 900px) {
+  .hero { padding-top: 4.5rem; }
+}
+
+/* High-contrast mode support */
+@media (prefers-contrast: more) {
+  :root {
+    --paper-dim: #E8E4D8;
+  }
+  .video-frame {
+    box-shadow: 0 0 0 2px var(--moss);
+  }
+}
