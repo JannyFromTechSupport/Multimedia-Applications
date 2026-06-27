@@ -12,7 +12,7 @@ The page is styled as a **field researcher's notebook entry:** aged paper textur
 - **Embedded video -** `wildlife.mp4` embedded with full playback controls, a poster image, and a captions track. 
 - **Description -** a short write-up beneath the video explaining the footage and its context. 
 - **Toggle button -** a single button that hides the video if it's playing/visible, or shows and plays it if it isn't. 
-- **Accessibility -** skip-to-content link, visible focus states, `aria-pressed` on the toggle button, semantic landmarks, and support for `prefers-reduced-motion` / `prefers-contrast`. 
+- **Accessibility -** skip-to-content link, visible focus states, `aria-pressed` on the toggle button, semantic landmarks, and support for `prefers-reduced-motion`/`prefers-contrast`. 
 - **Responsive design -** fluid typography and a mobile breakpoint that adapts the layout and button for smaller screens. 
 
 ## File Structure 
